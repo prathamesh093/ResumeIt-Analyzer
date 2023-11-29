@@ -21,7 +21,7 @@ from Courses import ds_course, web_course, android_course, ios_course, uiux_cour
 import pafy
 import plotly.express as px
 import youtube_dl
-
+ 
 def fetch_yt_video(link):
     try:
         video = pafy.new(link)
@@ -177,10 +177,23 @@ def run():
                                    value=resume_data['skills'], key='1')
 
                 ##  recommendation
-                ds_keyword = ['tensorflow', 'keras', 'pytorch', 'machine learning', 'deep Learning', 'flask',
-                              'streamlit']
-                web_keyword = ['react', 'django','MongDB','Rest Api' 'node jS', 'react js', 'php', 'laravel', 'magento', 'wordpress',
-                               'javascript', 'angular js', 'c#', 'flask']
+                ds_keywords = ['scikit-learn', 'pandas', 'numpy', 'matplotlib', 'seaborn','data analysis', 'data mining', 'data visualization',
+                                'data engineering', 'data preprocessing', 'feature engineering',
+                                'supervised learning', 'unsupervised learning', 'ensemble learning',
+                                'natural language processing', 'computer vision', 'time series analysis',
+                                'hyperparameter tuning', 'model evaluation', 'cross-validation',
+                                'big data', 'Apache Spark', 'Hadoop', 'SQL', 'NoSQL',
+                                'cloud computing', 'docker', 'kubernetes', 'data ethics',
+                                'explainable AI', 'interpretability', 'AI ethics', 'research paper']
+
+                web_keywords = ['scrum', 'kanban', 'web components', 'web assembly', 'websockets',
+                 'GraphQL', 'RESTful API', 'webpack', 'babel', 'gulp', 'grunt',
+                 'responsive design', 'progressive web apps (PWA)', 'single page applications (SPA)',
+                 'web security', 'SSL/TLS', 'content management systems (CMS)',
+                 'e-commerce', 'Google Analytics', 'Firebase', 'AWS', 'Azure',
+                 'Heroku', 'Nginx', 'Apache', 'git', 'GitHub', 'Bitbucket',
+                 'continuous integration (CI)', 'continuous deployment (CD)', 'devOps']
+
                 android_keyword = ['android', 'android development', 'flutter', 'kotlin', 'xml', 'kivy']
                 ios_keyword = ['ios', 'ios development', 'swift', 'cocoa', 'cocoa touch', 'xcode']
                 uiux_keyword = ['ux', 'adobe xd', 'figma', 'zeplin', 'balsamiq', 'ui', 'prototyping', 'wireframes',
@@ -195,15 +208,18 @@ def run():
                 ## Courses recommendation
                 for i in resume_data['skills']:
                     ## Data science recommendation
-                    if i.lower() in ds_keyword:
+                    if i.lower() in ds_keywords:
                         print(i.lower())
                         reco_field = 'Data Science'
                         st.success("** Our analysis says you are looking for Data Science Jobs.**")
-                        recommended_skills = ['Data Visualization', 'Predictive Analysis', 'Statistical Modeling',
-                                              'Data Mining', 'Clustering & Classification', 'Data Analytics',
-                                              'Quantitative Analysis', 'Web Scraping', 'ML Algorithms', 'Keras',
-                                              'Pytorch', 'Probability', 'Scikit-learn', 'Tensorflow', "Flask",
-                                              'Streamlit']
+                        recommended_skills = ['scikit-learn', 'pandas', 'numpy', 'matplotlib', 'seaborn','data analysis', 'data mining', 'data visualization',
+                                                'data engineering', 'data preprocessing', 'feature engineering',
+                                                'supervised learning', 'unsupervised learning', 'ensemble learning',
+                                                'natural language processing', 'computer vision', 'time series analysis',
+                                                'hyperparameter tuning', 'model evaluation', 'cross-validation',
+                                                'big data', 'Apache Spark', 'Hadoop', 'SQL', 'NoSQL',
+                                                'cloud computing', 'docker', 'kubernetes', 'data ethics',
+                                                'explainable AI', 'interpretability', 'AI ethics', 'research paper']
                         recommended_keywords = st_tags(label='### Recommended skills for you.',
                                                        text='Recommended skills generated from System',
                                                        value=recommended_skills, key='2')
@@ -214,12 +230,18 @@ def run():
                         break
 
                     ## Web development recommendation
-                    elif i.lower() in web_keyword:
+                    elif i.lower() in web_keywords:
                         print(i.lower())
                         reco_field = 'Web Development'
                         st.success("** Our analysis says you are looking for Web Development Jobs **")
-                        recommended_skills = ['React', 'Django', 'Node JS', 'React JS', 'php', 'laravel', 'Magento',
-                                              'wordpress', 'Javascript', 'Angular JS', 'c#', 'Flask', 'SDK']
+                        recommended_skills = ['scrum', 'kanban', 'web components', 'web assembly', 'websockets',
+                                                'GraphQL', 'RESTful API', 'webpack', 'babel', 'gulp', 'grunt',
+                                                'responsive design', 'progressive web apps (PWA)', 'single page applications (SPA)',
+                                                'web security', 'SSL/TLS', 'content management systems (CMS)',
+                                                'e-commerce', 'Google Analytics', 'Firebase', 'AWS', 'Azure',
+                                                'Heroku', 'Nginx', 'Apache', 'git', 'GitHub', 'Bitbucket',
+                                                'continuous integration (CI)', 'continuous deployment (CD)', 'devOps']
+
                         recommended_keywords = st_tags(label='### Recommended skills for you.',
                                                        text='Recommended skills generated from System',
                                                        value=recommended_skills, key='3')
