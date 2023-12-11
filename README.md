@@ -4,7 +4,7 @@
 ## Source
 - Extracting user's information from the Resume, I used [PyResparser](https://omkarpathak.in/pyresparser/)
 - Extracting Resume PDF into Text, I used [PDFMiner](https://pypi.org/project/pdfminer/).
-
+- Dowmload sumy lib for summary extraction.
 ## Features
 - User's & Admin Section
 - Resume Score
@@ -13,6 +13,7 @@
 - Courses Recommendations
 - Skills Recommendations
 - Youtube video recommendations
+- Resume summary
 
 ## Usage
 - `App.py` is the main Python file of Streamlit Web-Application. 
