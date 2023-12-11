@@ -21,14 +21,31 @@ from Courses import ds_course, web_course, android_course, ios_course, uiux_cour
 import pafy
 import plotly.express as px
 import youtube_dl
- 
+import spacy
+from spacy.matcher import Matcher
+import spacy
+nlp = spacy.load('en_core_web_sm')
+from sumy.parsers.plaintext import PlaintextParser
+from sumy.nlp.tokenizers import Tokenizer
+from sumy.summarizers.lsa import LsaSummarizer
+
+def generate_summary(text):
+    try:
+        # Use sumy for extractive summarization
+        parser = PlaintextParser.from_string(text, Tokenizer("english"))
+        summarizer = LsaSummarizer()
+        return " ".join(str(sentence) for sentence in summarizer(parser.document, sentences_count=5))
+    except Exception as e:
+        st.error(f"Error generating summary: {e}")
+        return ""
+     
 def fetch_yt_video(link):
     try:
         video = pafy.new(link)
         return video.title
     except Exception as e:
         print(f"Error fetching YouTube video: {e}")
-        return None
+        return ""
 
 def get_table_download_link(df, filename, text):
     """Generates a link allowing the data in a given panda dataframe to be downloaded
@@ -77,7 +94,7 @@ def course_recommender(course_list):
     for c_name, c_link in course_list:
         c += 1
         st.markdown(f"({c}) [{c_name}]({c_link})")
-        rec_course.append(c_name)
+        rec_course.append(c_name) 
         if c == no_of_reco:
             break
     return rec_course
@@ -144,8 +161,7 @@ def run():
             resume_data = ResumeParser(save_image_path).get_extracted_data()
             if resume_data:
                 ## Get the whole resume data
-                resume_text = pdf_reader(save_image_path)
-
+                resume_text = pdf_reader(save_image_path) 
                 st.header("**Resume Analysis**")
                 st.success("Hello " + resume_data['name'])
                 st.subheader("**Your Basic info**")
@@ -342,7 +358,7 @@ def run():
                         '''<h4 style='text-align: left; color: red;'>[-] According to our recommendation please add Hobbies⚽. It will show your persnality to the Recruiters and give the assurance that you are fit for this role or not.</h4>''',
                         unsafe_allow_html=True)
 
-                if 'Achievements' in resume_text:
+                if 'Achievements'in resume_text:
                     resume_score = resume_score + 20
                     st.markdown(
                         '''<h4 style='text-align: left; color: Green;'>[+] Awesome! You have added your Achievements🏅 </h4>''',
@@ -400,8 +416,15 @@ def run():
                 int_vid_title = fetch_yt_video(interview_videos)
                 #st.subheader("✅ **" + int_vid_title + "**")
                 st.video(interview_vid)
-
-                connection.commit()
+                
+                st.header("*Resume Summary*")
+                summary = generate_summary(resume_text)
+                if summary:
+                # Change font and sort in ordered manner
+                    st.markdown(f'<div style="font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6; text-align: justify;">{summary}</div>', unsafe_allow_html=True)
+                else:
+                    st.error("Failed to generate summary.")
+                          
             else:
                 st.error('Something went wrong..')
     else:
@@ -449,3 +472,4 @@ def run():
 
 
 run()
+
