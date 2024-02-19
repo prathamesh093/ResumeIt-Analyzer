@@ -15,12 +15,12 @@ A Resume Analyzer using Natural Language Processing (NLP), Sumy library, Pyrespa
 - Dowmload sumy lib for summary extraction.
 
 ## Workflow
--- The user uploads a resume file through the Streamlit interface.
--- Pdfminer is used to extract text content from the uploaded PDF resume.
--- Pyresparser parses the extracted text to identify and extract relevant information such as personal details, skills, work experience, etc.
--- NLP techniques may be employed to further analyze the textual content, such as summarization of lengthy paragraphs or identifying key phrases.
--- Sumy library could be utilized to generate a summary of the resume content.
--- Finally, the analyzed information and summary are displayed back to the user via the Streamlit interface, providing insights into the resume's content in a user-friendly format.
+- The user uploads a resume file through the Streamlit interface.
+- Pdfminer is used to extract text content from the uploaded PDF resume.
+- Pyresparser parses the extracted text to identify and extract relevant information such as personal details, skills, work experience, etc.
+- NLP techniques may be employed to further analyze the textual content, such as summarization of lengthy paragraphs or identifying key phrases.
+- Sumy library could be utilized to generate a summary of the resume content.
+- Finally, the analyzed information and summary are displayed back to the user via the Streamlit interface, providing insights into the resume's content in a user-friendly format.
 
 ## Features
 - User's & Admin Section
