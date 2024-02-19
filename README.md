@@ -8,6 +8,8 @@ A Resume Analyzer using Natural Language Processing (NLP), Sumy library, Pyrespa
 3. Pyresparser: Pyresparser is a Python library specifically designed for parsing resumes (in various formats such as PDF, DOC, DOCX) and extracting structured information such as personal details, skills, education, work experience, etc.
 4. Pdfminer: Pdfminer is a tool for extracting information from PDF documents. It is often used as a backend component in Python libraries for parsing PDF files, including Pyresparser, to extract text and layout information from PDF resumes.
 5. Streamlit: Streamlit is a popular Python library for building interactive web applications for data science and machine learning projects. It allows developers to create user-friendly interfaces with minimal code, making it suitable for building a frontend interface for the resume analyzer tool.
+
+![Alt text](C:\Users\Prathamesh Patil\OneDrive\Pictures\Screenshots)
    
 ## Source
 - Extracting user's information from the Resume, I used [PyResparser](https://omkarpathak.in/pyresparser/)
